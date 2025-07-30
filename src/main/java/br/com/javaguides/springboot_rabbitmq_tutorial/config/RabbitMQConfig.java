@@ -60,10 +60,12 @@ public class RabbitMQConfig {
                 .with(routingJsonKey);
     }
 
+    @Bean
     public MessageConverter converter(){
         return new Jackson2JsonMessageConverter();
     }
 
+    @Bean
     public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(converter());
